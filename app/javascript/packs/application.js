@@ -16,3 +16,12 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
+import { AddQuerySearchToImageURL } from '../components/new_list';
+
+document.addEventListener('turbolinks:load', () => {
+  console.log(document.getElementById('CreateListButton'));
+  console.log(document.getElementById('hidden_imageUrl'));
+  // .addEventListener('click', () => {
+    // AddQuerySearchToImageURL();
+  // });
+});

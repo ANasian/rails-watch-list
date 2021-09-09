@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-5 m-auto p-3">
+    <h1 class="text-center">Create a new List</h1>    
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-5 m-auto p-3">
+    <%= simple_form_for(@list) do |f| %>
+      <%= f.input :name, id: "inputQuery" %>
+      <%= f.hidden_field :image_url, value: "https://source.unsplash.com/featured/?", id: "hidden_imageUrl" %>
+    <div class="d-flex justify-content-center">
+      <%= f.submit "Create List", class: "btn btn-primary text-light", id: "CreateListButton" %>
+    </div>
+    <% end %>    
+  </div>
+</div>
