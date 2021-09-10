@@ -1,16 +1,12 @@
-<div class="row">
-  <div class="col-5 m-auto p-3">
-    <h1 class="text-center">Add a Movie to your list</h1>    
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-5 m-auto p-3">
+<div class="row justify-content-end">
+  <div class="col-5 p-3 m-auto form-card">
+    <h3 class="text-center">Add a Bookmark to your list</h3> 
     <%= simple_form_for [@list, @bookmark] do |f| %>
-      <%= f.input :comment %>
+      <%= f.error_notification %>
+      <%= f.input :comment, hint: "At least 6 characters" %>
       <%= f.association :movie %>
     <div class="d-flex justify-content-center">
-      <%= f.submit "Add Movie", class: "btn btn-primary text-light" %>
+      <%= f.submit "Add Bookmark", class: "btn btn-primary text-light" %>
     </div>
     <% end %>    
   </div>

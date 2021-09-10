@@ -1,26 +1,73 @@
-<div class="container-card mt-5">
-  <div class="d-flex">
-    <h1 class="flex-grow-1"><%= @list.name %></h1>
-    <div class="add-movie btn btn-success d-flex align-items-center justify-content-center">
-      <%= link_to "Add a Movie", new_list_bookmark_path(@list), class: "text-light text-decoration-none" %>
-    </div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @list.image_url %>');">
+  <div class="text-center">
+    <h1><%= @list.name %></h1>
+    <br>
+    <%= link_to "Add a Movie", new_list_bookmark_path(@list), class: "btn-flat text-decoration-none" %>
   </div>
-    <% @list.movies.each do |movie| %>
-        <div class="card-product mb-3 mt-3">
-          <%= image_tag movie.poster_url, alt: "movie-img" %>
-          <div class="card-product-infos">
-            <h5><%= movie.title %>  ·   ⭐️ <%= movie.rating %></h5>
-            <p><small><%= movie.overview %></small></p>
-            <br>
-            <p><em><strong>❝</strong> <%= movie.bookmarks[0].comment %></em></p>
-            <div class="btn-delete">
-              <%= link_to(bookmark_path(movie.bookmarks[0]), method: :delete) do %>
-                <div class="d-flex">
-                  <i class="fas fa-trash"></i><small>Remove</small>
-                </div>
-              <% end %>
+</div>
+
+<div class="d-flex flex-wrap justify-content-around mt-5 mx-5">
+      <% @list.movies.each do |movie| %>
+          <div class="card-product mb-3 mt-3">
+            <%= image_tag movie.poster_url, alt: "movie-img" %>
+            <div class="card-product-infos">
+              <h5><%= movie.title %>  ·   ⭐️ <%= movie.rating %></h5>
+              <div class="overview">
+                <p><small><%= movie.overview %></small></p>
+              </div>
+              <br>
+              <p><em><strong>❝</strong> <%= movie.bookmarks[0].comment %></em></p>
+              <div class="btn-delete">
+                <%= link_to(bookmark_path(movie.bookmarks[0]), method: :delete) do %>
+                  <div class="d-flex">
+                    <i class="fas fa-trash"></i><small>Remove</small>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-    <% end %>
+      <% end %>
 </div>
+
+  <br>
+
+  <div class="hr-container mb-3">
+    <hr>
+  </div>
+
+  <div class="review-container">
+    <div class="d-flex justify-content-around">
+      <div class="reviews flex-grow-1 mr-5 mb-3 p-3">
+        <h5>Reviews</h5>
+        <% @list.reviews.each do |review| %>
+          <ul class="lists list-group list-group-flush">
+            <li class="border-bottom">
+             <div class="d-flex">
+                <h5><%= '⭐️' * (review.rating) %></h5>
+                <small class="mx-3"><%= distance_of_time_in_words(Time.now, review.created_at) %> ago</small>
+              </div>
+              <p><%= review.comment %></p>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+        <div class="reviews-form col-5 sticky-top text-left bg-white mb-3 p-3">
+          <h5>Add a Review</h5>
+          <%= simple_form_for [@list, @review] do |f| %>
+            <%= f.input :comment, hint: "At least 6 characters"%>
+            <%= f.input :rating, collection: (1..5), input_html: { id: 'rating' } %>
+            <%= f.submit "Create Review", class: "btn btn-primary text-light" %>
+          <% end %>    
+        </div>
+    </div>
+  </div>
+  
+
+ 
+
+
+
+
+
+
+

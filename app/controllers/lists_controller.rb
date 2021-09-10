@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.image_url = "https://source.unsplash.com/featured/?#{list_params[:name]}"
     if @list.save
       redirect_to list_path(@list)
     else
@@ -18,6 +19,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @review = Review.new
   end
 
   private

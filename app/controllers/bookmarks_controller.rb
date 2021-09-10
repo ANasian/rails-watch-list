@@ -1,7 +1,8 @@
 class BookmarksController < ApplicationController
+  # before_action :set_list, only: [:create]
   def new
     @list = List.find(params[:list_id])
-    @movies = Movie.all
+    # @movies = Movie.all
     @bookmark = Bookmark.new
   end
 
@@ -12,7 +13,8 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to list_path(@bookmark.list)
     else
-      render :new #bug when the comment is < 6 characters
+      flash[:alert] = @bookmark.errors.full_messages.to_sentence
+      redirect_to new_list_bookmark_path(@bookmark.list)
     end
   end
 
@@ -27,4 +29,8 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:comment, :movie_id, :list_id)
   end
+
+  # def set_list
+  #   @list = List.find(params[:list_id])
+  # end
 end

@@ -16,12 +16,20 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
-import { AddQuerySearchToImageURL } from '../components/new_list';
+import 'jquery-bar-rating';
 
-document.addEventListener('turbolinks:load', () => {
-  console.log(document.getElementById('CreateListButton'));
-  console.log(document.getElementById('hidden_imageUrl'));
-  // .addEventListener('click', () => {
-    // AddQuerySearchToImageURL();
-  // });
+document.addEventListener('turbolinks:load', ()=> {
+  $(function() {
+        $('#rating').barrating({
+          theme: 'fontawesome-stars'
+        });
+     });
 });
+
+// document.addEventListener('turbolinks:load', () => {
+//   document.getElementById('CreateListButton').addEventListener('click', () => {
+//     AddQuerySearchToImageURL();
+//   });
+//   // console.log(document.getElementById('hidden_imageUrl'));
+//   // 
+// });

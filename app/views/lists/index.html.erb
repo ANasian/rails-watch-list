@@ -1,23 +1,25 @@
-<div class="banner">
-  <div class="container-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-    
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/daily);">
+  <div class="text-center">
+    <h1>Your Personal Watch List</h1>
   </div>
 </div>
 
-<h1>My lists</h1>
+<div class="container mt-3">
+  <h2>My lists</h2>
 
-<div class="row">
-  <% @lists.each do |list| %>
-    <div class="col-4">
-      <a href="/lists/<%= list.id %>" class="text-decoration-none text-dark">
-        <div class="card mb-5" style="width: 20rem; height: 10rem;">
-          <div class="card-body shadow-sm p-5 d-flex align-items-center justify-content-center"
-          style="background-image: url(<%= list.image_url %>);
-                background-position: center; background-size: cover;">
-            <h5 class="font-weight-bold shadow bg-light"><%= list.name %></h5>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-4">
+        <a href="/lists/<%= list.id %>" class="text-decoration-none text-dark">
+          <div class="card mb-5" style="width: 20rem; height: 10rem;">
+            <div class="card-body shadow-sm p-5 d-flex align-items-center justify-content-center"
+            style="background-image: url(<%= list.image_url %>);
+                  background-position: center; background-size: cover;">
+              <h5 class="font-weight-bold shadow bg-light"><%= list.name %></h5>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-  <% end %>
+        </a>
+      </div>
+    <% end %>
+  </div>
 </div>
