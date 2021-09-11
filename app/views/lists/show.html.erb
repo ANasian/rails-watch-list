@@ -7,28 +7,31 @@
   </div>
 </div>
 
-<div class="d-flex flex-wrap justify-content-around mt-5 mx-5">
+<div class="text-center mt-5 mx-5">
   <span class="mb-2 d-block"><small><em class="text-muted"><%= "You haven't saved any movies yet!" if @list.movies.empty? %></em></small></span>
-      <% @list.movies.each do |movie| %>
-          <div class="card-product mb-3 mt-3">
-            <%= image_tag movie.poster_url, alt: "movie-img" %>
-            <div class="card-product-infos">
-              <h5><%= movie.title %>  ·   ⭐️ <%= movie.rating %></h5>
-              <div class="overview">
-                <p><small><%= movie.overview %></small></p>
-              </div>
-              <br>
-              <p><em><strong>❝</strong> <%= movie.bookmarks[0].comment %></em></p>
-              <div class="btn-delete">
-                <%= link_to(bookmark_path(movie.bookmarks[0]), method: :delete) do %>
-                  <div class="d-flex">
-                    <i class="fas fa-trash"></i><small>Remove</small>
-                  </div>
-                <% end %>
-              </div>
+</div>
+
+<div class="d-flex flex-wrap justify-content-around mt-5 mx-5">
+  <% @list.movies.each do |movie| %>
+    <div class="card-product mb-3 mt-3">
+      <%= image_tag movie.poster_url, alt: "movie-img" %>
+      <div class="card-product-infos">
+        <h5><%= movie.title %>  ·   ⭐️ <%= movie.rating %></h5>
+        <div class="overview">
+          <p><small><%= movie.overview %></small></p>
+        </div>
+        <br>
+        <p><em><strong>❝</strong> <%= movie.bookmarks[0].comment %></em></p>
+        <div class="btn-delete">
+          <%= link_to(bookmark_path(movie.bookmarks[0]), method: :delete) do %>
+            <div class="d-flex">
+              <i class="fas fa-trash"></i><small>Remove</small>
             </div>
-          </div>
-      <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
   <br>
