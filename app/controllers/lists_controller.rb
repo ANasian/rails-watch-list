@@ -11,7 +11,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    # @list.image_url = "https://source.unsplash.com/featured/?#{list_params[:name]}"
+    @list.image_url = "https://source.unsplash.com/featured/?#{list_params[:name]}"
     if @list.save
       redirect_to list_path(@list)
     else
@@ -36,6 +36,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :image_url)
+    params.require(:list).permit(:name, :cover, :image_url)
   end
 end

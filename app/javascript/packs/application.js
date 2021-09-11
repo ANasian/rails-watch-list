@@ -16,12 +16,15 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
+// import 'jquery-bar-rating/dist/themes/fontawesome-stars.css';
+import 'jquery-bar-rating/dist/themes/css-stars';
 import 'jquery-bar-rating';
+
 
 document.addEventListener('turbolinks:load', ()=> {
   $(function() {
         $('#rating').barrating({
-          theme: 'fontawesome-stars'
+          theme: 'css-stars'
         });
      });
 });

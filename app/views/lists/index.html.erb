@@ -12,9 +12,15 @@
       <div class="col-4">
         <a href="/lists/<%= list.id %>" class="text-decoration-none text-dark">
           <div class="card mb-5" style="width: 20rem; height: 10rem;">
-            <div class="card-body shadow-sm p-5 d-flex align-items-center justify-content-center"
-            style="background-image: url(<%= list.image_url %>);
-                  background-position: center; background-size: cover;">
+             <% if list.cover.attached? %>
+              <div class="card-body shadow-sm p-5 d-flex align-items-center justify-content-center"
+              style="background-image: url('<%= cl_image_path list.cover.key %>');
+                    background-position: center; background-size: cover;">
+            <% else %>
+              <div class="card-body shadow-sm p-5 d-flex align-items-center justify-content-center"
+              style="background-image: url('<%= list.image_url %>');
+                    background-position: center; background-size: cover;">
+            <% end %>
               <h5 class="font-weight-bold shadow bg-light"><%= list.name %></h5>
             </div>
           </div>
