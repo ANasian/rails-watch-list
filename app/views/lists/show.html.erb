@@ -3,10 +3,12 @@
     <h1><%= @list.name %></h1>
     <br>
     <%= link_to "Add a Movie", new_list_bookmark_path(@list), class: "btn-flat text-decoration-none" %>
+    <%= link_to 'Delete this list', list_path(@list), method: :delete, class: 'btn-flat-red text-decoration-none', data: { confirm: 'Are you sure you want to delete this list?' } %>
   </div>
 </div>
 
 <div class="d-flex flex-wrap justify-content-around mt-5 mx-5">
+  <span class="mb-2 d-block"><small><em class="text-muted"><%= "You haven't saved any movies yet!" if @list.movies.empty? %></em></small></span>
       <% @list.movies.each do |movie| %>
           <div class="card-product mb-3 mt-3">
             <%= image_tag movie.poster_url, alt: "movie-img" %>

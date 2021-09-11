@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'reviews/new'
-  resources :lists, only: [:index, :show, :new, :create] do
+  resources :lists, only: [:index, :show, :new, :create, :destroy] do
     resources :bookmarks, only: [:new, :create]
     resources :reviews, only: [:create]
   end

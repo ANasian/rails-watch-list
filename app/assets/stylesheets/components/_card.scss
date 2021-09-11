@@ -78,6 +78,19 @@
   color: white;
 }
 
+.btn-flat-red {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #BA2D3A;
+  transition: background 0.3s ease;
+}
+
+.btn-flat-red:hover {
+  background: #BA2D3A;
+  color: white;
+}
+
 .hr-container {
   margin: 0 auto;
   width: 90vw;
