@@ -52,7 +52,9 @@
           <ul class="lists list-group list-group-flush">
             <li class="border-bottom">
              <div class="d-flex">
-                <h5><%= '⭐️' * (review.rating) %></h5>
+              <% review.rating.times do %>
+                <i class="fas fa-star star-yellow"></i>
+              <% end %>
                 <small class="mx-3"><%= distance_of_time_in_words(Time.now, review.created_at) %> ago</small>
               </div>
               <p><%= review.comment %></p>
@@ -64,7 +66,7 @@
           <h5>Add a Review</h5>
           <%= simple_form_for [@list, @review] do |f| %>
             <%= f.input :comment, hint: "At least 6 characters"%>
-            <%= f.input :rating, collection: (1..5), input_html: { id: 'rating' } %>
+            <%= f.input :rating, as: :select, collection: (1..5), input_html: { id: 'rating' } %>
             <%= f.submit "Create Review", class: "btn btn-primary text-light" %>
           <% end %>    
         </div>
