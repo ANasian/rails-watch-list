@@ -64,7 +64,7 @@
           <h5>Add a Review</h5>
           <%= simple_form_for [@list, @review] do |f| %>
             <%= f.input :comment, hint: "At least 6 characters"%>
-            <%= f.input :rating, collection: (1..5), input_html: { id: '#' } %>
+            <%= f.input :rating, collection: (1..5), input_html: { id: 'rating' } %>
             <%= f.submit "Create Review", class: "btn btn-primary text-light" %>
           <% end %>    
         </div>
