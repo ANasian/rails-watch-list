@@ -1,11 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <%= link_to(image_tag('popcorn.png', width: 50, height: 50), root_path) %>
-      <div class="d-flex justify-content-end mx-3">
-        <ul class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item mx-5"><%= link_to "My List", root_path, class: "text-dark badge-light text-decoration-none"  %></li>
-          <li class="nav-item mx-2"><%= link_to "New List", new_list_path, class: "text-dark badge-light text-decoration-none" %></li>
-        </ul>
-      </div>
+<nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
+  <%= link_to(image_tag('popcorn.png', width: 50, height: 50), root_path, class: "mx-3") %>
+
+  <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+     <ul class="navbar-nav navbar-nav mr-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <%= image_tag "placeholder.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: {   toggle: "dropdown" } %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My List", root_path, class: "nav-link"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "New List", new_list_path, class: "nav-link" %>
+        <li>
+      <% else %>
+        <li class="nav-item active mx-5"><%= link_to "Log in", new_user_session_path, class: "btn btn-dark text-light px-3 nav-link" %></li>
+      <% end %>
+     </ul>
   </div>
 </nav>
