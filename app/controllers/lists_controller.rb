@@ -3,7 +3,8 @@ class ListsController < ApplicationController
   before_action :find_list, only: [:show, :destroy]
 
   def index
-    @lists = List.where("user_id = ?", current_user)
+    # @lists = List.where("user_id = ?", current_user)
+    @lists = current_user.lists
   end
 
   def new
