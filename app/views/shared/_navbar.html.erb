@@ -19,7 +19,8 @@
           <%= link_to "New List", new_list_path, class: "nav-link" %>
         <li>
       <% else %>
-        <li class="nav-item active mx-5"><%= link_to "Log in", new_user_session_path, class: "btn btn-dark text-light px-3 nav-link" %></li>
+        <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "font-weight-bold text-dark nav-link" %></li>
+        <li class="nav-item mx-3"><%= link_to "Create account", new_user_registration_path, class: "btn btn-dark text-light nav-link px-3" %></li>
       <% end %>
      </ul>
   </div>
