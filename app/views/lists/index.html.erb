@@ -7,17 +7,21 @@
 <div class="container mt-3">
   <h2>My lists</h2>
 
+  <div class="text-center d-flex justify-content-center">
+    <span class="mb-2 text-center"><small><em class="text-muted"><%= "Log in or Create an account to start saving your lists" if @lists.empty? %></em></small></span>
+  </div>
+
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col-4">
         <a href="/lists/<%= list.id %>" class="text-decoration-none text-dark">
           <div class="card mb-5" style="width: 20rem; height: 10rem;">
              <% if list.cover.attached? %>
-              <div class="card-body shadow-sm p-5 d-flex align-items-center justify-content-center"
+              <div class="card-body shadow-sm p-5 d-flex align-items-center   justify-content-center"
               style="background-image: url('<%= cl_image_path list.cover.key %>');
                     background-position: center; background-size: cover;">
             <% else %>
-              <div class="card-body shadow-sm p-5 d-flex align-items-center justify-content-center"
+              <div class="card-body shadow-sm p-5 d-flex align-items-center   justify-content-center"
               style="background-image: url('<%= list.image_url %>');
                     background-position: center; background-size: cover;">
             <% end %>

@@ -4,7 +4,11 @@ class ListsController < ApplicationController
 
   def index
     # @lists = List.where("user_id = ?", current_user)
-    @lists = current_user.lists
+    if current_user
+      @lists = current_user.lists
+    else
+      @lists = [];
+    end
   end
 
   def new
